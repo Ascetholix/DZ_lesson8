@@ -14,7 +14,7 @@ void PrintArryaMatrix(int[,] argMatrix)   // Метод вывода матри�
     }
 }
 
-void FillArryaMatrix(int[,] argMatrix)
+void FillArryaMatrix(int[,] argMatrix)  // Метод заполнения матрицы рандомна
 {
     for (int i = 0; i < argMatrix.GetLength(0); i++) // rows - строки
     {
@@ -29,25 +29,40 @@ void ChangeArray(int[,] arg)
 {
     for (int i = 0; i < arg.GetLength(0); i++)
     {
-        int count = 1;
-        int j = 0;
-        int b = arg[i, j];
-        for (j = 0; j < arg.GetLength(1); j++)
+        bool excessB = true;  // Переменая для не вывода личных проверок больще 2
+
+        for (int j = 0; j < arg.GetLength(1); j++)
         {
+            int cout = 0;             // счетчик 
+            bool excessA = true;     // Переменая для не вывода личных проверок больще 1
 
-            if (b == arg[i, j] && i != j)
+            for (int k = 0; k < arg.GetLength(0); k++)
             {
-                b = arg[i, j];
-                count++;
 
+                if (arg[i, j] == arg[i, k])
+                {
+                    cout++;
+                }
             }
-            // Console.WriteLine($"Число {arg[i, j]} в строке {i + 1} втречаеться {count} раз");
-
+            if (cout == 1)
+            {
+                if (excessA)
+                {
+                    Console.WriteLine($"Число {arg[i, j]} в строке {i + 1} втречаеться {cout} раз");
+                    excessA = false;
+                }
+            }
+            if (cout > 1)
+            {
+                if (excessB)
+                {
+                    Console.WriteLine($"Число {arg[i, j]} в строке {i + 1} втречаеться {cout} раз");
+                    excessB = false;
+                }
+            }
         }
-        Console.WriteLine($"Число {arg[i, j]} в строке {i + 1} втречаеться {count} раз");
-        // Console.WriteLine();
+        Console.WriteLine();
     }
-
 }
 Console.Write("Введите длину строки ");
 int row = Convert.ToInt32(Console.ReadLine());

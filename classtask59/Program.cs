@@ -33,45 +33,57 @@ void FillArryaMatrix(int[,] argMatrix)
     {
         for (int j = 0; j < argMatrix.GetLength(1); j++)  // columns - столбцы
         {
-            argMatrix[i, j] = new Random().Next(0, 10);
+            argMatrix[i, j] = new Random().Next(10, 100);
         }
     }
 }
 
-int[,] DaleteArryaMatrix(int[,] arg)
+int[,] DaleteArryaMatrix(int[,] arg) // Метод удаление строки и стольбца
 {
     int min = arg[arg.GetLength(0) - 1, arg.GetLength(1) - 1];   // Минимум элемента массива
-    int inRowMin = 0;                                              // Мини индекс строки 
-    int inColumMin = 0;                                             // Мини индекс  стольбца
+    int inRowMin = 0;                                              // Мин индекс строки 
+    int inColumMin = 0;                                             // Мин индекс  стольбца
+    int N = arg.GetLength(0) - 1;
+    int L = arg.GetLength(1) - 1;
 
-    int[,] arg1 = new int[arg.GetLength(0) - 1, arg.GetLength(1) - 1];  // новый  массив размер -1 размера задаваемого массив
+    int[,] arg1 = new int[N, L];  // новый  массив размер -1 размера задаваемого массив
 
-    for (int i = 0; i < arg.GetLength(0); i++) // rows - строки
+    for (int h = 0; h < arg.GetLength(0); h++) // rows - строки
     {
         for (int k = 0; k < arg.GetLength(1); k++)  // columns - столбцы
         {
-            if (min > arg[i, k])
+            if (min > arg[h, k])
             {
-                min = arg[i, k];
-                inRowMin = i;
-                inColumMin = k;
+                min = arg[h, k]; // Нахождения мин элмента и его индексов
+                inRowMin = 0;
+                inColumMin = 0;
             }
         }
-        
+
     }
+    bool b = true;
+    int cout = 0;
+  
     for (int i = 0; i < arg1.GetLength(0); i++)
     {
         for (int j = 0; j < arg1.GetLength(1); j++)
         {
-            if (i != inRowMin && j != inColumMin)
+            if (i != inRowMin && j != inColumMin)  // если не равно песваеваем значание в arg1
             {
-                arg1[i, j] = arg[i, j];
+                if (b)
+                {
+                    arg1[i, j] = arg[i, j];
+                    // b = false;
+                    // cout++;
+                    // break;
+                }
+
             }
         }
     }
+
     return arg1;
 }
-
 Console.Write("Введите длину строки ");
 int row = Convert.ToInt32(Console.ReadLine());
 
@@ -83,5 +95,4 @@ int[,] arr = new int[row, colums];
 FillArryaMatrix(arr);
 PrintArryaMatrix(arr);
 Console.WriteLine();
-// DaleteArryaMatrix(arr);
 PrintArryaMatrix(DaleteArryaMatrix(arr));

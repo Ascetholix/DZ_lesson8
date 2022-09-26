@@ -24,14 +24,37 @@ void PrintArrya(int[,] arg)   // Метод вывода матрицы
 
 void FillArrya(int[,] arg)
 {
-    for (int i = 0; i < arg.GetLength(0); i++) // rows - строки
+    for (int i = 0; i < arg.GetLength(0); i++)
     {
-        for (int j = 0; j < arg.GetLength(1); j++)  // columns - столбцы
+        for (int j = 0; j < arg.GetLength(1); j++)
         {
             arg[i, j] = new Random().Next(0, 10);
         }
     }
 }
+
+void SortArrayMatrix(int[,] arg)
+{
+    for (int i = 0; i < arg.GetLength(0); i++)
+    {
+        for (int j = 0; j < arg.GetLength(1); j++)
+        {
+            for (int k = 0; k < arg.GetLength(0); k++)
+            {
+                for (int n = 0; n < arg.GetLength(1); n++)
+                {
+                    if (arg[i, j] < arg[k, n])
+                    {
+                        int h = arg[i, j];
+                        arg[i, j] = arg[k, n];
+                        arg[k, n] = h;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 Console.Write("Введите длину строки ");
 int row = Convert.ToInt32(Console.ReadLine());
@@ -42,4 +65,7 @@ int colums = Convert.ToInt32(Console.ReadLine());
 int[,] arr = new int[row, colums];
 
 FillArrya(arr);
+PrintArrya(arr);
+Console.WriteLine();
+SortArrayMatrix(arr);
 PrintArrya(arr);

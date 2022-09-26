@@ -32,6 +32,26 @@ void FillArrya(int[,] arg)
     }
 }
 
+void SummaArray(int[,] arg)
+{
+    int sumRow = 0;
+    int sumColumn = 0;
+    int sum = 0;
+    for (int i = 0; i < arg.GetLength(0); i++)
+    {
+        sumColumn = 0;
+        sumRow = 0;
+        for (int j = 0; j < arg.GetLength(1); j++)
+        {
+            sumRow += arg[i, j];
+            sumColumn += arg[j, i];
+            sum += arg[i, j];
+        }
+        Console.WriteLine($"Сумма {i + 1} строки {sumRow} и сумма {i + 1} колоны  {sumColumn}");
+    }
+    Console.WriteLine($"Обшая сумма элементов двумерного массива {sum}");
+}
+
 Console.Write("Введите длину строки ");
 int row = Convert.ToInt32(Console.ReadLine());
 
@@ -42,3 +62,5 @@ int[,] arr = new int[row, colums];
 
 FillArrya(arr);
 PrintArrya(arr);
+
+SummaArray(arr);

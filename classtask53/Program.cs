@@ -14,7 +14,7 @@ void PrintArryaMatrix(int[,] argMatrix)   // Метод вывода матри�
     }
 }
 
-void ChangeArray(int[,] arg)
+void ChangeArray(int[,] arg) // Метода обмена 
 {
     int N = arg.GetLength(0);
     for (int i = 0; i < arg.GetLength(0); i++)
@@ -25,7 +25,7 @@ void ChangeArray(int[,] arg)
             {
                 int h = arg[i, j];
                 arg[i, j] = arg[N - 1, j];
-                h = arg[N - 1, j];
+                arg[N - 1, j] = h;
             }
 
         }
@@ -33,7 +33,7 @@ void ChangeArray(int[,] arg)
     }
 }
 
-void FillArryaMatrix(int[,] argMatrix)
+void FillArryaMatrix(int[,] argMatrix)  // Метод заполнения матрицы рандомна
 {
     for (int i = 0; i < argMatrix.GetLength(0); i++) // rows - строки
     {
