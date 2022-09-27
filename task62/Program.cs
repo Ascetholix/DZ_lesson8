@@ -20,45 +20,28 @@ void PrintArrya(int[,] arg)   // Метод вывода матрицы
 
 void FillArrya(int[,] arg)
 {
-
-    int r = arg.GetLength(0)-1;
-    int c = arg.GetLength(1)-1;
-
-    for (int i = 0; i < arg.GetLength(0); i++) // rows - строки
+    int[] mas = new int[arg.GetLength(0) * arg.GetLength(1)];
+    int cout = 0;
+    for (int i = 0; i < arg.GetLength(0); i++)
     {
+        // bool ch = true;
 
-        for (int j = 0; j < arg.GetLength(1); j++)  // columns - столбцы
+        for (int j = 0; j < arg.GetLength(1); j++)
         {
-            arg[i, j] = i + 1 + j;
-        }
-    }
-    for (int i =0; i < arg.GetLength(0)+1; i++)
-    {
-        if (i == r)
-        {
-            arg[r , c-i] +=r-i;
+
+            arg[i, j] = mas[cout];
+            cout++;
+            for (int k = 0; k < mas.Length; k++)
+            {
+
+                mas[cout] = k + 1;
+                break;
+
+            }
+
         }
     }
 }
-
-// void FillArrya1(int[,] arg)
-// {
-
-//     int r = arg.GetLength(0);
-//     int c = arg.GetLength(1);
-//     for (int i = 0; i < r; i++)
-//     {
-//         for (int j = 0; j < c; j++)
-//         {
-//             if (i == r - 1)
-//             {
-//                 arg[r - 1, c - 1 - j];
-//             }
-//         }
-//     }
-
-
-// }
 
 Console.Write("Введите длину строки ");
 int row = Convert.ToInt32(Console.ReadLine());

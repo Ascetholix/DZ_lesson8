@@ -29,12 +29,12 @@ void ChangeArray(int[,] arg)
 {
     for (int i = 0; i < arg.GetLength(0); i++)
     {
-        bool excessB = true;  // Переменая для не вывода личных проверок больще 2
+        bool excessB = true;  // Переменая для не вывода лишных проверок больще 2
 
         for (int j = 0; j < arg.GetLength(1); j++)
         {
             int cout = 0;             // счетчик 
-            bool excessA = true;     // Переменая для не вывода личных проверок больще 1
+            bool excessA = true;     // Переменая для не вывода лишных проверок больще 1
 
             for (int k = 0; k < arg.GetLength(0); k++)
             {
